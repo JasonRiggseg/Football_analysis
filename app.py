@@ -6,7 +6,7 @@ import numpy as np
 import tempfile, cv2, os
 from joblib import load 
 
-PLAYER_DETECTION_MODEL = load(r'D:\ahahahah\team_classifier.sav')
+PLAYER_DETECTION_MODEL = load('your model path')
 
 app = FastAPI()
 
