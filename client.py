@@ -4,9 +4,9 @@ import base64
 # Target endpoint must handle base64 encoded string, not multipart file
 #url = "http://localhost:8000"
 
-url = "https://fe96-34-125-199-135.ngrok-free.app/"
+url = "your ngrok app url"
 # Read video and encode as base64
-video_file_path = r"D:\ahahahah\121364_0.mp4"
+video_file_path = "your vedio path file"
 
 try:
     with open(video_file_path, "rb") as f:
