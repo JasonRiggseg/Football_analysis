@@ -6,10 +6,7 @@ from roboflow import Roboflow
 import numpy as np
 from sklearn.cluster import KMeans
 
-# Load the Roboflow model (initialize once)
-#rf = Roboflow(api_key=os.getenv("vmsJ0NWzacPKCysW55Br"))
-rf = Roboflow(api_key="vmsJ0NWzacPKCysW55Br")
-#vmsJ0NWzacPKCysW55Br
+rf = Roboflow(api_key="vmsJ0NWzacPKCysW55Br")  # replace with your token
 project = rf.workspace().project("/football-field-detection-f07vi/14")  # replace with your project slug
 model = project.version(1).model
 
