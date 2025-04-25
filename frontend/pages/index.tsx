@@ -22,7 +22,8 @@ export default function HomePage() {
     formData.append('file', file); // 🔁 Ensure this key matches the backend expectations
 
     try {
-      const response = await fetch('/analyze', {
+      // Assuming your Vercel app is deployed at "https://your-vercel-deployment-url.vercel.app"
+      const response = await fetch('football-analysis-nwaeb19qd-hala-abdeens-projects.vercel.app', {
         method: 'POST',
         body: formData,
       });
