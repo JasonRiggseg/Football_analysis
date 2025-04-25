@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/:path*",
+        "destination": "https://football-analysis-f3pfdr6t1-hala-abdeens-projects.vercel.app/" 
+      }
+    ]
+  }
+  
