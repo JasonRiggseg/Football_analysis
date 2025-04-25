@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏈 Football Analysis</title>
+    <style>
+      body {
+        background-color: #111827;
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        min-height: 100vh;
+        justify-content: center;
+      }
+      input[type="file"],
+      button {
+        margin: 0.5rem;
+        padding: 0.75rem;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #10b981;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 2rem;
+        background-color: #1f2937;
+        padding: 1rem;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>console.log('Selected file:', selectedFile);
+
+console.log('Uploading file...');
+
+console.log('File uploaded successfully:', res);
+
+console.log('Blob created:', blob);
+
+console.log('URL created:', url);
+
+console.log('Result container displayed:', document.getElementById("resultContainer"));```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Football Analysis</title>
+    <style>
+      body {
+        background-color: #111827;
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        min-height: 100vh;
+        justify-content: center;
+      }
+      input[type="file"],
+      button {
+        margin: 0.5rem;
+        padding: 0.75rem;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #10b981;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 2rem;
+        background-color: #1f2937;
+        padding: 1rem;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> Football Analysis</h1>
+    <input
+      type="file"
+      accept="video/*"
+      id="videoInput"
+      className="mb-4 bg-gray-800 p-2 rounded border border-gray-700"
+      title="Upload a video file"
+    />
+
+    <button onclick="uploadFile()">Show Analysis</button>
+
+    <div class="result" id="resultContainer" style="display: none">
+      <h2> Result</h2>
+      <video id="resultVideo" controls style="width: 100%"></video>
+      <br />
+      <a id="downloadLink" download="result.mp4">Download Video</a>
+    </div>
+
+    <script>
+      var selectedFile;
+
+      document.getElementById("videoInput").addEventListener("change", (e) => {
+        selectedFile = e.target.files[0];
+      });
+
+      async function uploadFile() {
+        if (!selectedFile) {
+          alert("Please select a file.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+
+        try {
+          const res = await fetch("/upload", { method: "POST", body: formData });
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+
+          document.getElementById("resultVideo").src = url;
+          document.getElementById("downloadLink").href = url;
+          document.getElementById("resultContainer").style.display = "block";
+        } catch (error) {
+          console.error("Error uploading file:", error);
+          alert("Error uploading file. Please try again.");
+        }
+      }
+    </script>
+  </body>
+</html>
+```
+    <h1>🏈 Football Analysis</h1>
+    <input
+      type="file"
+      accept="video/*"
+      onChange="{handleFileChange}"
+      className="mb-4 bg-gray-800 p-2 rounded border border-gray-700"
+      title="Upload a video file"
+    />
+
+    <button onclick="uploadFile()">Show Analysis</button>
+
+    <div class="result" id="resultContainer" style="display: none">
+      <h2>📊 Result</h2>
+      <video id="resultVideo" controls style="width: 100%"></video>
+      <br />
+      <a id="downloadLink" download="result.mp4">Download Video</a>
+    </div>
+
+    <script>
+      let selectedFile;
+
+      document.getElementById("videoInput").addEventListener("change", (e) => {
+        selectedFile = e.target.files[0];
+      });
+
+      async function uploadFile() {
+        if (!selectedFile) {
+          alert("Please select a file.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+
+        const res = await fetch("/upload", { method: "POST", body: formData });
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+
+        document.getElementById("resultVideo").src = url;
+        document.getElementById("downloadLink").href = url;
+        document.getElementById("resultContainer").style.display = "block";
+      }
+    </script>
+  </body>
+</html>

@@ -1,8 +1,17 @@
-{
-    "rewrites": [
+
+
+  {
+    "version": 2,
+    "builds": [
       {
-        "source": "/api/:path*",
-        "destination": "football-analysis-nwaeb19qd-hala-abdeens-projects.vercel.app/api/:path*"
+        "src": "api/analyze.js",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/analyze",
+        "dest": "/api/analyze.js"
       }
     ]
   }
